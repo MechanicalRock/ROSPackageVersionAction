@@ -2,5 +2,5 @@ name: 'Compare ROS Package Version'
 description: 'Compare ROS Package Version between master and the branch '
 runs:
   using: 'node12'
-  main: 'dist/comparePackageVersion.js'
+  main: 'dist/index.js'
   

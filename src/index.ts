@@ -6,9 +6,9 @@ async () => {
   const versionFromBranch = extractPackageVersionFromBranch("./package.xml");
   const versionFromMaster = await extractPackageVersionFromMaster();
 
-  return versionFromBranch !== versionFromMaster
+  return versionFromBranch === versionFromMaster
     ? core.setFailed(
-        "Action failed due to the difference of package version between main and the branch."
+        "Action failed due to the package version between main and the branch are same. Please bump the package version"
       )
     : true;
 };
