@@ -134,14 +134,16 @@ Object.defineProperty(exports, "__esModule", ({ value: true }));
 const extractPackageVersionFromBranch_1 = __nccwpck_require__(9856);
 const extractPackageVersionFromMaster_1 = __nccwpck_require__(9225);
 const core = __importStar(__nccwpck_require__(2186));
-() => __awaiter(void 0, void 0, void 0, function* () {
+const handler = () => __awaiter(void 0, void 0, void 0, function* () {
     const versionFromBranch = extractPackageVersionFromBranch_1.extractPackageVersionFromBranch("./package.xml");
     const versionFromMaster = yield extractPackageVersionFromMaster_1.extractPackageVersionFromMaster();
     core.info(`Versions from branch and mater, ${versionFromBranch}, ${versionFromMaster}`);
+    console.log(`Versions from branch and mater, ${versionFromBranch}, ${versionFromMaster}`);
     return versionFromBranch === versionFromMaster
         ? core.setFailed("Action failed due to the package version between main and the branch are same. Please bump the package version")
         : true;
 });
+handler();
 
 
 /***/ }),

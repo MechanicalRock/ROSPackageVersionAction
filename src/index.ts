@@ -2,10 +2,13 @@ import { extractPackageVersionFromBranch } from "./extractPackageVersionFromBran
 import { extractPackageVersionFromMaster } from "./extractPackageVersionFromMaster";
 import * as core from "@actions/core";
 
-async () => {
+const handler = async () => {
   const versionFromBranch = extractPackageVersionFromBranch("./package.xml");
   const versionFromMaster = await extractPackageVersionFromMaster();
   core.info(
+    `Versions from branch and mater, ${versionFromBranch}, ${versionFromMaster}`
+  );
+  console.log(
     `Versions from branch and mater, ${versionFromBranch}, ${versionFromMaster}`
   );
   return versionFromBranch === versionFromMaster
@@ -14,3 +17,5 @@ async () => {
       )
     : true;
 };
+
+handler();
