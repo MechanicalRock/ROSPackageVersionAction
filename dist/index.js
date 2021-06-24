@@ -133,6 +133,7 @@ const extractPackageVersionFromBranch_1 = __nccwpck_require__(9856);
 const extractPackageVersionFromMaster_1 = __nccwpck_require__(9225);
 const core = __importStar(__nccwpck_require__(2186));
 () => __awaiter(void 0, void 0, void 0, function* () {
+    console.log("To check if this function has been called");
     const versionFromBranch = extractPackageVersionFromBranch_1.extractPackageVersionFromBranch("./package.xml");
     const versionFromMaster = yield extractPackageVersionFromMaster_1.extractPackageVersionFromMaster();
     console.log("Versions from branch and mater", versionFromBranch, versionFromMaster);

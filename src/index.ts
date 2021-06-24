@@ -3,6 +3,7 @@ import { extractPackageVersionFromMaster } from "./extractPackageVersionFromMast
 import * as core from "@actions/core";
 
 async () => {
+  console.log("To check if this function has been called");
   const versionFromBranch = extractPackageVersionFromBranch("./package.xml");
   const versionFromMaster = await extractPackageVersionFromMaster();
   console.log(

@@ -1,6 +1,6 @@
-import simpleGit, { SimpleGit, SimpleGitOptions } from "simple-git";
-
+import simpleGit, { SimpleGit } from "simple-git";
 import * as parser from "xml2json";
+
 import { extractVersionFromJSON } from "./extractPackageVersionFromBranch";
 export const extractPackageVersionFromMaster = async () => {
   const git: SimpleGit = simpleGit();
