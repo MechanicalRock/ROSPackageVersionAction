@@ -135,6 +135,7 @@ const core = __importStar(__nccwpck_require__(2186));
 () => __awaiter(void 0, void 0, void 0, function* () {
     const versionFromBranch = extractPackageVersionFromBranch_1.extractPackageVersionFromBranch("./package.xml");
     const versionFromMaster = yield extractPackageVersionFromMaster_1.extractPackageVersionFromMaster();
+    console.log("Versions from branch and mater", versionFromBranch, versionFromMaster);
     return versionFromBranch === versionFromMaster
         ? core.setFailed("Action failed due to the package version between main and the branch are same. Please bump the package version")
         : true;
