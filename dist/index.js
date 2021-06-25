@@ -83,12 +83,21 @@ Object.defineProperty(exports, "__esModule", ({ value: true }));
 exports.extractPackageVersionFromMaster = void 0;
 const simple_git_1 = __importDefault(__nccwpck_require__(1477));
 const parser = __importStar(__nccwpck_require__(7267));
-const core = __importStar(__nccwpck_require__(2186));
 const extractPackageVersionFromBranch_1 = __nccwpck_require__(9856);
 const extractPackageVersionFromMaster = () => __awaiter(void 0, void 0, void 0, function* () {
     const git = simple_git_1.default();
-    const packageXMLFile = yield git.show("main:package.xml");
-    core.info(`XML master, ${packageXMLFile}`);
+    console.log("git", yield git.remote(["-v"]));
+    console.log("git", yield git.status());
+    const branch = yield git.branch();
+    console.log("git", branch.current);
+    let packageXMLFile;
+    try {
+        packageXMLFile = yield git.show("main:package.xml");
+    }
+    catch (e) {
+        throw e;
+    }
+    console.log(`XML master, ${packageXMLFile}`);
     const packageJSON = parser.toJson(packageXMLFile);
     return extractPackageVersionFromBranch_1.extractVersionFromJSON(JSON.parse(packageJSON));
 });
@@ -136,8 +145,9 @@ const extractPackageVersionFromMaster_1 = __nccwpck_require__(9225);
 const core = __importStar(__nccwpck_require__(2186));
 const handler = () => __awaiter(void 0, void 0, void 0, function* () {
     const versionFromBranch = extractPackageVersionFromBranch_1.extractPackageVersionFromBranch("./package.xml");
+    console.log(`Versions from branchhhh, ${versionFromBranch}`);
     const versionFromMaster = yield extractPackageVersionFromMaster_1.extractPackageVersionFromMaster();
-    core.info(`Versions from branch and mater, ${versionFromBranch}, ${versionFromMaster}`);
+    console.log(`Versions from branch and mater, ${versionFromBranch}, ${versionFromMaster}`);
     console.log(`Versions from branch and mater, ${versionFromBranch}, ${versionFromMaster}`);
     return versionFromBranch === versionFromMaster
         ? core.setFailed("Action failed due to the package version between main and the branch are same. Please bump the package version")

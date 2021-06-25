@@ -34,12 +34,21 @@ Object.defineProperty(exports, "__esModule", { value: true });
 exports.extractPackageVersionFromMaster = void 0;
 const simple_git_1 = __importDefault(require("simple-git"));
 const parser = __importStar(require("xml2json"));
-const core = __importStar(require("@actions/core"));
 const extractPackageVersionFromBranch_1 = require("./extractPackageVersionFromBranch");
 const extractPackageVersionFromMaster = () => __awaiter(void 0, void 0, void 0, function* () {
     const git = simple_git_1.default();
-    const packageXMLFile = yield git.show("main:package.xml");
-    core.info(`XML master, ${packageXMLFile}`);
+    console.log("git", yield git.remote(["-v"]));
+    console.log("git", yield git.status());
+    const branch = yield git.branch();
+    console.log("git", branch.current);
+    let packageXMLFile;
+    try {
+        packageXMLFile = yield git.show("main:package.xml");
+    }
+    catch (e) {
+        throw e;
+    }
+    console.log(`XML master, ${packageXMLFile}`);
     const packageJSON = parser.toJson(packageXMLFile);
     return extractPackageVersionFromBranch_1.extractVersionFromJSON(JSON.parse(packageJSON));
 });

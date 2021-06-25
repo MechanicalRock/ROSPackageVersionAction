@@ -21,5 +21,3 @@ export const extractPackageVersionFromMaster = async () => {
 
   return extractVersionFromJSON(JSON.parse(packageJSON));
 };
-
-extractPackageVersionFromMaster();
