@@ -6,10 +6,10 @@ import { extractVersionFromJSON } from "./extractPackageVersionFromBranch";
 export const extractPackageVersionFromMaster = async () => {
   const git: SimpleGit = simpleGit();
   const branch = await git.branch();
-  console.log("git", branch.all);
+  console.log("gittttt", branch.all, branch.current, branch.branches);
   let packageXMLFile;
   try {
-    packageXMLFile = await git.show("main:package.xml");
+    packageXMLFile = await git.show("remotes/origin/main:package.xml");
   } catch (e) {
     throw e;
   }
@@ -19,3 +19,4 @@ export const extractPackageVersionFromMaster = async () => {
 
   return extractVersionFromJSON(JSON.parse(packageJSON));
 };
+extractPackageVersionFromMaster();

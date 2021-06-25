@@ -87,10 +87,10 @@ const extractPackageVersionFromBranch_1 = __nccwpck_require__(9856);
 const extractPackageVersionFromMaster = () => __awaiter(void 0, void 0, void 0, function* () {
     const git = simple_git_1.default();
     const branch = yield git.branch();
-    console.log("git", branch.all);
+    console.log("gittttt", branch.all, branch.current, branch.branches);
     let packageXMLFile;
     try {
-        packageXMLFile = yield git.show("main:package.xml");
+        packageXMLFile = yield git.show("remotes/origin/main:package.xml");
     }
     catch (e) {
         throw e;
@@ -100,6 +100,7 @@ const extractPackageVersionFromMaster = () => __awaiter(void 0, void 0, void 0, 
     return extractPackageVersionFromBranch_1.extractVersionFromJSON(JSON.parse(packageJSON));
 });
 exports.extractPackageVersionFromMaster = extractPackageVersionFromMaster;
+exports.extractPackageVersionFromMaster();
 
 
 /***/ }),
