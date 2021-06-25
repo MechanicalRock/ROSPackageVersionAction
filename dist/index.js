@@ -86,10 +86,8 @@ const parser = __importStar(__nccwpck_require__(7267));
 const extractPackageVersionFromBranch_1 = __nccwpck_require__(9856);
 const extractPackageVersionFromMaster = () => __awaiter(void 0, void 0, void 0, function* () {
     const git = simple_git_1.default();
-    console.log("git", yield git.remote(["-v"]));
-    console.log("git", yield git.status());
     const branch = yield git.branch();
-    console.log("git", branch.current);
+    console.log("git", branch.all);
     let packageXMLFile;
     try {
         packageXMLFile = yield git.show("main:package.xml");

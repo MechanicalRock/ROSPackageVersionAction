@@ -37,10 +37,8 @@ const parser = __importStar(require("xml2json"));
 const extractPackageVersionFromBranch_1 = require("./extractPackageVersionFromBranch");
 const extractPackageVersionFromMaster = () => __awaiter(void 0, void 0, void 0, function* () {
     const git = simple_git_1.default();
-    console.log("git", yield git.remote(["-v"]));
-    console.log("git", yield git.status());
     const branch = yield git.branch();
-    console.log("git", branch.current);
+    console.log("git", branch.all);
     let packageXMLFile;
     try {
         packageXMLFile = yield git.show("main:package.xml");
