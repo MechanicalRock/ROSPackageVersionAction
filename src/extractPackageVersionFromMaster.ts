@@ -5,7 +5,7 @@ import { extractVersionFromJSON } from "./extractPackageVersionFromBranch";
 
 export const extractPackageVersionFromMaster = async () => {
   const git: SimpleGit = simpleGit();
-  await git.checkout("main");
+  await git.checkout("origin/main");
   const branch = await git.branch();
 
   console.log("gittttt", branch.all, branch.current, branch.branches);
