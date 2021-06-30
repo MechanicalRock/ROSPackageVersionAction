@@ -1,5 +1,8 @@
 name: 'Compare ROS Package Version'
 description: 'Compare ROS Package Version between master and the branch '
+outputs:
+  version: # id of output
+    description: 'The version of package xml'
 runs:
   using: 'node12'
   main: 'dist/index.js'

@@ -1,5 +1,6 @@
 import * as fs from "fs";
 import * as parser from "xml2json";
+import * as core from "@actions/core";
 
 type ROSPackageXML = {
   package: {
@@ -15,6 +16,7 @@ export const extractVersionFromJSON = (json: ROSPackageXML) => {
 export const extractPackageVersionFromBranch = (path: string) => {
   const packageXML = fs.readFileSync(path);
   const packageJSON = parser.toJson(packageXML);
-
-  return extractVersionFromJSON(JSON.parse(packageJSON));
+  const version = extractVersionFromJSON(JSON.parse(packageJSON));
+  core.setOutput("version", version);
+  return version;
 };
