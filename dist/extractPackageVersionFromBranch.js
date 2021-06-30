@@ -22,6 +22,7 @@ Object.defineProperty(exports, "__esModule", { value: true });
 exports.extractPackageVersionFromBranch = exports.extractVersionFromJSON = void 0;
 const fs = __importStar(require("fs"));
 const parser = __importStar(require("xml2json"));
+const core = __importStar(require("@actions/core"));
 const extractVersionFromJSON = (json) => {
     return json.package.version;
 };
@@ -29,6 +30,8 @@ exports.extractVersionFromJSON = extractVersionFromJSON;
 const extractPackageVersionFromBranch = (path) => {
     const packageXML = fs.readFileSync(path);
     const packageJSON = parser.toJson(packageXML);
-    return exports.extractVersionFromJSON(JSON.parse(packageJSON));
+    const version = exports.extractVersionFromJSON(JSON.parse(packageJSON));
+    core.setOutput("version", version);
+    return version;
 };
 exports.extractPackageVersionFromBranch = extractPackageVersionFromBranch;
