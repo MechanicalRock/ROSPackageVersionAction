@@ -2,7 +2,7 @@ import { extractPackageVersionFromBranch } from "./extractPackageVersionFromBran
 
 const handler = async () => {
   const versionFromBranch = extractPackageVersionFromBranch("./package.xml");
-  console.log(`Versions from branch, ${versionFromBranch}`);
+  console.log(`Version, of package,xml ${versionFromBranch}`);
 
   return versionFromBranch;
 };

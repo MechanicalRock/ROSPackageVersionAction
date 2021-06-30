@@ -64,7 +64,7 @@ Object.defineProperty(exports, "__esModule", ({ value: true }));
 const extractPackageVersionFromBranch_1 = __nccwpck_require__(9856);
 const handler = () => __awaiter(void 0, void 0, void 0, function* () {
     const versionFromBranch = extractPackageVersionFromBranch_1.extractPackageVersionFromBranch("./package.xml");
-    console.log(`Versions from branch, ${versionFromBranch}`);
+    console.log(`Version, of package,xml ${versionFromBranch}`);
     return versionFromBranch;
 });
 handler();
